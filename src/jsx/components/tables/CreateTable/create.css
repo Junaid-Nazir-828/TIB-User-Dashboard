@@ -1,0 +1,16 @@
+.create-button{
+    font-size: 16px;
+    border: 0 !important;
+    width: auto;
+	padding: 14px 20px;
+	margin: 0 5px;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: #9568FF;
+	color: #fff;
+}
+
+/* #6f42c1 */
+/* .create-button:hover{
+    background-color: #6f42c1;
+} */
