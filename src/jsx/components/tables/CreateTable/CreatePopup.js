@@ -1,25 +1,48 @@
-export const CreatePopup = () => {
+import "./create.css";
+import { useState } from "react";
+
+export const CreatePopup = ({ handleCloseButton  , handleCreateButton }) => {
+
+    const [tableName , setTableName] = useState('');
+    const [trendTime , setTrendTime] = useState('');
+    const [breakoutTime , setBreakoutTime] = useState('');
+    const [script , setScript ] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        setTableName(tableName);
+        setTrendTime(trendTime);
+        setBreakoutTime(breakoutTime);
+        setScript(script);
+
+        console.log(`${tableName} ${trendTime} ${breakoutTime} ${script}`)
+    }
+
     return (
         <>
-            <div className="row">
-                <div className="col-lg-8">
+            <div className="modal-content">
+                <div className="col-lg-12">
                     <div className="card">
                         <div className="card-header">
                             <h4 className="card-title">Table Info</h4>
+                            <button className="btn" onClick={handleCloseButton}>
+                                X
+                            </button>
                         </div>
                         <div className="card-body">
                             <div className="form-validation">
                                 <form
                                     className="form-valide"
-                                    action="#"
-                                    method="post"
-                                    onSubmit={(e) => e.preventDefault()}>
+                                    // action="#"
+                                    // method="post"
+                                    onSubmit={handleSubmit}>
                                     <div className="row">
-                                        <div className="col-xl-10">
+                                        <div className="col-xl-12">
                                             <div className="form-group mb-3 row">
                                                 <label
                                                     className="col-lg-4 col-form-label"
-                                                    htmlFor="val-username">
+                                                    htmlFor="val-tableName">
                                                     Table Name
                                                     <span className="text-danger">
                                                         *
@@ -29,16 +52,17 @@ export const CreatePopup = () => {
                                                     <input
                                                         type="text"
                                                         className="form-control"
-                                                        id="val-username"
-                                                        name="val-username"
+                                                        id="val-tableName"
+                                                        name="val-tableName"
                                                         placeholder="Enter table name.."
+                                                        onChange={(event) => setTableName(event.target.value)}
                                                     />
                                                 </div>
                                             </div>
                                             <div className="form-group mb-3 row">
                                                 <label
                                                     className="col-lg-4 col-form-label"
-                                                    htmlFor="val-email">
+                                                    htmlFor="val-trendTime">
                                                     Trend Time{" "}
                                                     <span className="text-danger">
                                                         *
@@ -48,16 +72,18 @@ export const CreatePopup = () => {
                                                     <input
                                                         type="text"
                                                         className="form-control"
-                                                        id="val-email"
-                                                        name="val-email"
+                                                        id="val-trendTime"
+                                                        name="val-trendTime"
                                                         placeholder="Enter trend time.."
+                                                        // value={formData.trendTime}
+                                                        onChange={(event) => setTrendTime(event.target.value)}
                                                     />
                                                 </div>
                                             </div>
                                             <div className="form-group mb-3 row">
                                                 <label
                                                     className="col-lg-4 col-form-label"
-                                                    htmlFor="val-password">
+                                                    htmlFor="val-breakoutTime">
                                                     Breakout Time
                                                     <span className="text-danger">
                                                         *
@@ -67,16 +93,18 @@ export const CreatePopup = () => {
                                                     <input
                                                         type="text"
                                                         className="form-control"
-                                                        id="val-password"
-                                                        name="val-password"
+                                                        id="val-breakoutTime"
+                                                        name="val-breakoutTime"
                                                         placeholder="Enter breakout Time.."
+                                                        // value={formData.breakoutTime}
+                                                        onChange={(event) => setBreakoutTime(event.target.value)}
                                                     />
                                                 </div>
                                             </div>
                                             <div className="form-group mb-3 row">
                                                 <label
                                                     className="col-lg-4 col-form-label"
-                                                    htmlFor="val-confirm-password">
+                                                    htmlFor="val-script">
                                                     Script Name{" "}
                                                     <span className="text-danger">
                                                         *
@@ -84,29 +112,31 @@ export const CreatePopup = () => {
                                                 </label>
                                                 <div className="col-lg-6">
                                                     <select
+                                                        // value={formData.script}
+                                                        onChange={(event) => setScript(event.target.value)}
                                                         className="form-control"
-                                                        id="val-skill"
-                                                        name="val-skill">
+                                                        id="val-script"
+                                                        name="val-script">
                                                         <option value="">
                                                             Please select
                                                         </option>
-                                                        <option value="html">
+                                                        <option value="NIFTY">
                                                             NIFTY
                                                         </option>
-                                                        <option value="css">
+                                                        <option value="SENSEX">
                                                             SENSEX
                                                         </option>
-                                                        
                                                     </select>
                                                 </div>
-                                            </div>                                            
+                                            </div>
+                                            <button
+                                                onClick={handleCreateButton}
+                                                type="submit"
+                                                className="btn mt-3 btn-primary">
+                                                Add
+                                            </button>
                                         </div>
-                                    </div>                                    
-                                        <button
-                                            type="submit"
-                                            className="btn mt-3 btn-primary">
-                                            Create
-                                        </button>                                    
+                                    </div>
                                 </form>
                             </div>
                         </div>
