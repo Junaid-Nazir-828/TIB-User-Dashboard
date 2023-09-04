@@ -32,7 +32,7 @@ export function signupAction(email, password, navigate) {
                 //history,
             );
             dispatch(confirmedSignupAction(response.data));
-            navigate('/dashboard');
+            navigate('/');
 			//history.push('/dashboard');
         })
         .catch((error) => {
@@ -70,7 +70,7 @@ export function loginAction(email, password, navigate) {
 			   //return response.data;
 				//return 'success';
 				//history.push('/dashboard');                
-				navigate('/dashboard');                
+				navigate('/');                
             })
             .catch((error) => {
 				//console.log('error');
