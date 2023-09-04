@@ -1,0 +1,58 @@
+symbols/scripts:
+
+All = 'ALL'
+FnO = 'FNO'
+Nifty50 = 'NIFTY 50'
+NiftyNext50 = 'NIFTY NEXT 50'
+Nifty100 = 'NIFTY 100'
+Nifty200 = 'NIFTY 200'
+Nifty500 = 'NIFTY 500'
+NiftyMidcap50 = 'NIFTY MIDCAP 50'
+NiftyMidcap100 = 'NIFTY MIDCAP 100'
+NiftySmlcap100 = 'NIFTY SMLCAP 100'
+NiftyMidcap150 = 'NIFTY MIDCAP 150'
+NiftySmlcap50 = 'NIFTY SMLCAP 50'
+NiftySmlcap250 = 'NIFTY SMLCAP 250'
+NiftyMidsml400 = 'NIFTY MIDSML 400'
+NiftyBank = 'NIFTY BANK'
+NiftyAuto = 'NIFTY AUTO'
+NiftyFinService = 'NIFTY FIN SERVICE'
+NiftyFmcg = 'NIFTY FMCG'
+NiftyIt = 'NIFTY IT'
+NiftyMedia = 'NIFTY MEDIA'
+NiftyMetal = 'NIFTY METAL'
+NiftyPharma = 'NIFTY PHARMA'
+NiftyPsuBank = 'NIFTY PSU BANK'
+NiftyPvtBank = 'NIFTY PVT BANK'
+NiftyRealty = 'NIFTY REALTY'
+Nifty50Value20 = 'NIFTY50 VALUE 20'
+NiftyAlpha50 = 'NIFTY ALPHA 50'
+Nifty50EqlWgt = 'NIFTY50 EQL WGT'
+Nifty100EqlWgt = 'NIFTY100 EQL WGT'
+Nifty100Lowvol30 = 'NIFTY100 LOWVOL30'
+Nifty200Qualty30 = 'NIFTY200 QUALTY30'
+NiftyCommodities = 'NIFTY COMMODITIES'
+NiftyConsumption = 'NIFTY CONSUMPTION'
+NiftyEnergy = 'NIFTY ENERGY'
+NiftyInfra = 'NIFTY INFRA'
+NiftyMnc = 'NIFTY MNC'
+NiftyPse = 'NIFTY PSE'
+NiftyServSector = 'NIFTY SERV SECTOR'
+
+
+time intervals:
+
+in_1_minute = "1"
+in_3_minute = "3"
+in_5_minute = "5"
+in_15_minute = "15"
+in_30_minute = "30"
+in_45_minute = "45"
+in_1_hour = "1H"
+in_2_hour = "2H"
+in_3_hour = "3H"
+in_4_hour = "4H"
+in_daily = "1D"
+in_weekly = "1W"
+in_monthly = "1M"
+
