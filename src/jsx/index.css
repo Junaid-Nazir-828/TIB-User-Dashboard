@@ -710,3 +710,66 @@ button.react-calendar__tile.react-calendar__tile--active.react-calendar__tile--r
 	height: auto;
 	display: contents;
 }
+
+.create-button{
+  font-size: 16px;
+  border: 0 !important;
+  width: auto;
+padding: 14px 20px;
+margin: 0 5px;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: #9568FF;
+color: #fff;
+}
+
+/* #6f42c1 */
+/* .create-button:hover{
+  background-color: #6f42c1;
+} */
+
+/* .popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} */
+
+
+/* new classes */
+
+.popup-container, .popup {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 99;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);      
+  max-width: 600px;
+  min-width: 300px;
+}

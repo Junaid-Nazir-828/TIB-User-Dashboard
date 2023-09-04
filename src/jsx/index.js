@@ -27,7 +27,7 @@ const Markup = () => {
   const allroutes = [
 
     ///// table
-    { url: 'table-create' , component : <CreateTable /> },	    
+    { url: '' , component : <CreateTable /> },	    
   ];  
 
   return (

@@ -1,8 +1,9 @@
 import PageTitle from "../../../layouts/PageTitle";
-import CreatePopup from "./CreatePopup";
+import CreatePopup from "../../../layouts/Popups/tablePopups/CreatePopup";
 import React, { useState } from "react";
 import './create.css'
 import TableComponent from "./TableComponent";
+import { tableData } from "./tableData";
 // import AddRowPopup from "./AddRowPopup";
 
 export const CreateTable = () => {
@@ -45,8 +46,8 @@ export const CreateTable = () => {
 
     const onCreateBtnClick = (event) => {
         event.preventDefault();
-
-        setTableList(tableList.concat(<TableComponent key={tableList.length} />))
+        console.log("request to backend")
+        // setTableList(tableList.concat(<TableComponent key={tableList.length} />))
         handleTablePopupClose();
     }
 
@@ -74,8 +75,21 @@ export const CreateTable = () => {
             )}
                         
 
-            { tableList }
+            {tableData.map((data, i) => (
+                <div key={i}>
+                <TableComponent
+                    tableName={data.name}
+                    trendTime={data.trend_tf}
+                    breakoutTime={data.breakout_t}
+                    rows = {data.rows}
+                />
+                </div>
+            ))}
         </>
     );
 };
 export default CreateTable;
+
+
+  
+  
