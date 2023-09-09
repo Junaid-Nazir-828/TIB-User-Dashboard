@@ -90,7 +90,7 @@
     "netlify": "cross-env-shell HUGO_BASEURL=$DEPLOY_PRIME_URL npm-run-all icons docs-purge docs-build",
     "pages": "node build/build-pages.js",
     "publish": "npm-run-all icons docs-build icons-zip",
-    "start": "npm run docs-serve",
+    "start": "node init && npm run docs-serve",
     "test": "npm-run-all docs-build --parallel --aggregate-output --continue-on-error test:*",
     "test:eslint": "eslint --cache --cache-location node_modules/.cache/.eslintcache --report-unused-disable-directives .",
     "test:fusv": "fusv docs/assets/scss/",

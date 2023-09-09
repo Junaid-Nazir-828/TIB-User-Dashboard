@@ -12,7 +12,8 @@ import { useState } from "react";
 import AddRowPopup from "../../../layouts/Popups/tablePopups/AddRowPopup";
 import "./create.css";
 import ConfirmationPopup from "../../../layouts/Popups/tablePopups/ConfirmationPopup";
-
+import axios from "axios";
+import { BackendUrl } from "../../../../urls";
 const svg1 = (
   <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -24,7 +25,7 @@ const svg1 = (
   </svg>
 );
 
-const TableComponent = ({ tableName, trendTime, breakoutTime, rows }) => {
+const TableComponent = ({ tableName, trendTime, breakoutTime, rows, tableId }) => {
   const [isAddRowPopupOpen, setisAddRowPopupOpen] = useState(false);
   const [isDeleteTablePopupOpen, setisDeleteTablePopupOpen] = useState(false);
   const [isTableCollapsed, setIsTableCollapsed] = useState(true); // State to track table collapse/expand
@@ -48,7 +49,15 @@ const TableComponent = ({ tableName, trendTime, breakoutTime, rows }) => {
   const handleDeletePopupClose = () => {
     setisDeleteTablePopupOpen(false);
   };
-
+  const handleDelete = async () => {
+    try {
+      const response = await axios.delete(`${BackendUrl}/table/${tableId}`);
+      console.log("Table deleted successfully");
+      // window.location.reload()
+    } catch (error) {
+      console.error("Error deleting table:", error);
+    }
+  };
   const textForDeletePopup = "Are you sure you want to delete this table?";
 
   return (
@@ -59,30 +68,30 @@ const TableComponent = ({ tableName, trendTime, breakoutTime, rows }) => {
             <Card.Title>
               <span
                 className="clickable"
-                style={{cursor: "pointer"}}
+                style={{ cursor: "pointer" }}
                 onClick={toggleTableCollapse}
                 aria-controls="example-collapse-text"
                 aria-expanded={isTableCollapsed}
               >
-                              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                
-                viewBox="0 0 16 16"
-                style={{
-                  marginRight: "10px",
-                  transform: isTableCollapsed ? "rotate(-90deg)" : "rotate(0deg)",
-                  transition: "transform 0.1s ease",
-                }}
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M1.646 5.646a.5.5 0 01.708 0L8 11.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z"
-                />
-              </svg>
-
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  style={{
+                    marginRight: "10px",
+                    transform: isTableCollapsed
+                      ? "rotate(-90deg)"
+                      : "rotate(0deg)",
+                    transition: "transform 0.1s ease",
+                  }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M1.646 5.646a.5.5 0 01.708 0L8 11.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z"
+                  />
+                </svg>
                 {tableName} - Trend: {trendTime} min - Breakout: {breakoutTime}{" "}
                 min
               </span>
@@ -208,6 +217,7 @@ const TableComponent = ({ tableName, trendTime, breakoutTime, rows }) => {
           <div className="popup">
             <div className="modal-content">
               <ConfirmationPopup
+                handleYesButton = {handleDelete}
                 text={textForDeletePopup}
                 handleCloseButton={handleDeletePopupClose}
               />
