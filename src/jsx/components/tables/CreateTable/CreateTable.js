@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import './create.css'
 import TableComponent from "./TableComponent";
 import { tableData } from "./tableData";
+import { useEffect } from "react";
+import axios from "axios";
+import { BackendUrl } from "../../../../urls";
 // import AddRowPopup from "./AddRowPopup";
 
 export const CreateTable = () => {
@@ -44,12 +47,45 @@ export const CreateTable = () => {
     // handle table addition
     const [tableList , setTableList] = useState([]);
 
-    const onCreateBtnClick = (event) => {
-        event.preventDefault();
-        console.log("request to backend")
-        // setTableList(tableList.concat(<TableComponent key={tableList.length} />))
-        handleTablePopupClose();
-    }
+    useEffect(() => {
+        axios.get(`${BackendUrl}/table/`)
+        .then((response) => {
+            console.log(response.data);
+            setTableList(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }, [])
+
+    const onCreateBtnClick = async (name, trend_tf, breakout_tf, script) => {
+        console.log("request to backend");
+        try {
+          // Create an object with the data you want to send
+          const requestData = {
+            name: name,
+            trend_tf: trend_tf,
+            breakout_tf: breakout_tf,
+            symbol_list: [script],
+            rows:[]
+          };
+      
+          // Send a POST request to the backend
+          const response = await axios.post(`${BackendUrl}/table`, requestData);
+      
+          // Handle the response (e.g., log success message)
+          console.log("Table created successfully:", response.data);
+      
+          // Close the table popup or perform other actions as needed
+          handleTablePopupClose();
+          window.location.reload()
+        } catch (error) {
+          console.error("Error creating table:", error);
+      
+          // Handle the error (e.g., show an error message to the user)
+        }
+      };
+      
 
     return (
         <>
@@ -75,12 +111,13 @@ export const CreateTable = () => {
             )}
                         
 
-            {tableData.map((data, i) => (
+            {tableList?.map((data, i) => (
                 <div key={i}>
                 <TableComponent
+                    tableId={data.id}
                     tableName={data.name}
                     trendTime={data.trend_tf}
-                    breakoutTime={data.breakout_t}
+                    breakoutTime={data.breakout_tf}
                     rows = {data.rows}
                 />
                 </div>
